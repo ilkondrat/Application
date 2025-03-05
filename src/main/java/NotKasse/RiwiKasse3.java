@@ -83,7 +83,7 @@ public class RiwiKasse3 {
         }
 
 
-        // Округление итоговой суммы и НДС в пользу магазина (округление вверх)
+
         BigDecimal roundedTotalSum = new BigDecimal(totalSum).setScale(2, RoundingMode.CEILING);
         BigDecimal roundedVatAmount = new BigDecimal(totalVAT).setScale(2, RoundingMode.CEILING);
 
