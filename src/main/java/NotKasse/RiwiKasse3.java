@@ -89,11 +89,9 @@ public class RiwiKasse3 {
             double price = product.getPrice();
             double totalPrice = price * quantity;
 
-            // Используем существующий метод calculateVAT из интерфейса VATCalculate
             double vatPerItem = ((VATCalculate) product).calculateVAT();
             double totalVat = vatPerItem * quantity;
 
-            // Определяем ставку НДС на основе типа продукта
             String vatRate = (product instanceof Konsumgueter) ? "19%" : "7%";
 
             System.out.printf("%s x%d - %.2f EUR (inkl. MwSt %s: %.2f EUR)\n",
