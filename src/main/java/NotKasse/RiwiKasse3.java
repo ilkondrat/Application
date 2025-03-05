@@ -9,6 +9,10 @@ import java.math.RoundingMode;
 public class RiwiKasse3 {
 
     public static void main(String[] args) {
+        double totalSum = 0;
+        int totalQuantity = 0;
+        double totalVAT = 0;
+
         Scanner scanner = new Scanner(System.in);
 
         Map<Integer, Product> productList = new TreeMap<>();
@@ -30,31 +34,36 @@ public class RiwiKasse3 {
 
         System.out.println("\nBitte geben Sie die Produktnamen ein (zum Beenden '0' eingeben):");
 
-        double totalSum = 0;
-        int totalQuantity = 0;
-        double totalVAT = 0;
         Map<Integer, Integer> purchasedProducts = new TreeMap<>();
         while (true) {
             System.out.print("Produktnummer oder '0' to exit: ");
-            int productNumber = Integer.parseInt(scanner.nextLine().trim());
+
+
+            int productNumber = 0;
+            try {
+                productNumber = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input");
+                continue;
+            }
 
             if (productNumber == 0) {
                 break;
             }
 
             if (productList.containsKey(productNumber)) {
+                Integer quantity = null;
+                do{
                 System.out.print("Bitte geben Sie die gewuenschte Menge ein: ");
-                int quantity;
                 try {
                     quantity = Integer.parseInt(scanner.nextLine().trim());
                     if (quantity <= 0) {
-                        System.out.println("Menge muss groesser als 0 sein. Standardwert 1 wird verwendet.");
-                        quantity = 1;
+                        System.out.println("Menge muss groesser als 0 sein.");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Ungueltige Eingabe. Standardwert 1 wird verwendet.");
-                    quantity = 1;
+                    System.out.println("Ungueltige Eingabe.");
                 }
+                } while (quantity == null || quantity <= 0);
                 Product product = productList.get(productNumber);
                 double price = product.getPrice();
                 double itemTotal = price * quantity;
