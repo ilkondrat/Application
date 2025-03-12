@@ -1,4 +1,8 @@
-package NotKasse;
+package NotKasse.service;
+
+import NotKasse.model.Grundbedarf;
+import NotKasse.model.Konsumgueter;
+import NotKasse.model.Product;
 
 import java.util.Map;
 import java.util.Scanner;

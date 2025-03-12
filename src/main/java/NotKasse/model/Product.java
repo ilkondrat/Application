@@ -1,4 +1,4 @@
-package NotKasse;
+package NotKasse.model;
 
 import java.util.Objects;
 

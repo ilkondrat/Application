@@ -1,4 +1,6 @@
-package NotKasse;
+package NotKasse.model;
+
+import NotKasse.service.VATCalculate;
 
 public class Grundbedarf extends Product implements VATCalculate {
     private static final double VAT_RATE = 0.07;
